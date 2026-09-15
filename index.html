@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetrologyCheck</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+
+    
+</body>
+<header>
+    <div class="logo">LegalCheck</div>
+
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">How It Works</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+<main class="hero">
+
+    <div class="hero-content">
+        <p class="tagline">SMART LABEL COMPLIANCE</p>
+
+        <h1>Check your product label.<br>
+        <span>Before it reaches the shelf.</span></h1>
+
+        <p class="hero-text">
+            Upload a packaging label and let LegalCheck
+            scan important Legal Metrology declarations in seconds.
+        </p>
+
+        <button class="scan-button" id="scan-button">Scan a Label →</button>
+        <div class="upload-box">
+    <div class="upload-icon">↑</div>
+
+    <h2>Upload your product label</h2>
+
+    <p>Drag & drop an image here or click to browse</p>
+
+    <span>PNG, JPG or JPEG • Max 10MB</span>
+
+    <input type="file" id="label-upload" accept="image/png, image/jpeg">
+    <div id="image-preview"></div>
+</div>
+    </div>
+    <section id="results-section" class="results-section">
+    <h2>Compliance Results</h2>
+
+    <div class="score-card">
+        <div id="compliance-score">--%</div>
+        <div id="compliance-status">Waiting for analysis</div>
+    </div>
+
+    <div class="results-details">
+        <h3>Detected Fields</h3>
+        <div id="detected-fields"></div>
+
+        <h3>Potential Issues</h3>
+        <div id="violations"></div>
+    </div>
+</section>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
