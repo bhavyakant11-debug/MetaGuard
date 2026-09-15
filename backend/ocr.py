@@ -1,35 +1,29 @@
+import os
 import pytesseract
 from PIL import Image, ImageEnhance, ImageFilter
 
 
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
+# Render/Linux uses the normal "tesseract" command.
+# Windows can use the installed path automatically if it exists.
+if os.name == "nt":
+    windows_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    if os.path.exists(windows_path):
+        pytesseract.pytesseract.tesseract_cmd = windows_path
 
 
 def extract_text(image_path):
-    """
-    Extract text from a product/package image using OCR.
-    """
-
     image = Image.open(image_path)
 
-    # Convert image to grayscale
     image = image.convert("L")
 
-    # Enlarge image for better OCR
     image = image.resize(
         (image.width * 2, image.height * 2)
     )
 
-    # Improve contrast
-    contrast = ImageEnhance.Contrast(image)
-    image = contrast.enhance(2)
+    image = ImageEnhance.Contrast(image).enhance(2)
 
-    # Slightly sharpen the image
     image = image.filter(ImageFilter.SHARPEN)
 
-    # Extract text
     text = pytesseract.image_to_string(
         image,
         config="--psm 6"
